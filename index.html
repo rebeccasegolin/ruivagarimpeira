@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="lupas.png"image/x-icon">
-  <title>Ruiva Garimpeira – Links de Afiliada</title>
+  <link rel="shortcut icon" href="lupas.png" type="image/x-icon">
+  <title>Ruiva Garimpeira</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── Brand tokens ─────────────────────────────────── */
     :root {
       --bg:           #F7E9DF;
       --terracotta:   #C56A45;
       --salmon:       #E9A78A;
       --peach:        #F4C9B4;
-      --cream:        #F7E9DF;
       --taupe:        #DCC3B1;
       --brown-mid:    #7A4A2F;
       --brown-dark:   #4D2E1F;
@@ -39,320 +37,219 @@
       z-index: 1;
       width: 100%;
       max-width: 500px;
-      padding: 30px 18px 48px;
+      padding: 40px 18px 52px;
     }
 
     /* ══════════════════════════════════════════
        HERO
     ══════════════════════════════════════════ */
     .hero {
-      display: grid;
-      grid-template-columns: 152px 1fr;
-      gap: 12px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-bottom: 24px;
+      text-align: center;
+      margin-bottom: 36px;
     }
 
-    .hero-mascot img {
-      width: 150px;
-      height: 150px;
+    .hero-img {
+      width: 170px;
+      height: 170px;
       object-fit: contain;
-      display: block;
+      margin-bottom: 14px;
     }
 
-    .hero-content { display: flex; flex-direction: column; }
-
-    /* sparkles are now in the fixed background layer */
-    .como-voce {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--brown-dark);
-    }
-
-    .pode-nos {
+    .brand-ruiva {
       font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
+      font-size: 2.5rem;
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 1.0;
       color: var(--brown-dark);
+      line-height: 1.0;
+      letter-spacing: -0.5px;
     }
 
-    .ajudar {
+    .brand-garimpeira {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.3rem;
+      font-size: 2.9rem;
       font-weight: 700;
       color: var(--brown-mid);
-      line-height: 1.15;
+      line-height: 1.1;
     }
 
-    .badge-gastar {
-      display: inline-block;
-      background: var(--terracotta);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.54rem;
-      font-weight: 800;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin: 8px 0;
-      white-space: nowrap;
-    }
-
-    .hero-desc {
+    .hero-tagline {
       font-size: 0.72rem;
       font-weight: 500;
       color: var(--brown-mid);
-      line-height: 1.65;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
     }
 
     /* ══════════════════════════════════════════
-       AFFILIATE ROWS
+       NAV CARDS
     ══════════════════════════════════════════ */
-    .links-section {
+    .nav-cards {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 12px;
+      margin-bottom: 28px;
     }
 
-    .link-row {
+    .nav-card {
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .link-card {
-      flex: 1;
+      gap: 14px;
       background: var(--white);
-      border-radius: 16px;
-      padding: 11px 13px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 2px 12px rgba(197, 106, 69, 0.10);
+      border-radius: 18px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--brown-dark);
+      box-shadow: 0 2px 14px rgba(197, 106, 69, 0.10);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
 
-    /* ── Logo circles ─────────────────────────────── */
-    .logo-circle {
-      width: 50px;
-      height: 50px;
-      min-width: 50px;
-      border-radius: 50%;
+    .nav-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(197, 106, 69, 0.22);
+      background: linear-gradient(135deg, var(--white) 60%, var(--peach) 100%);
+    }
+
+    .nav-card:active { transform: translateY(0); }
+
+    .card-icon {
+      font-size: 1.9rem;
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      overflow: hidden;
+      background: var(--bg);
+      border-radius: 14px;
     }
 
-    .logo-shopee  { background: #EE4D2D; color: #fff; font-size: 1.5rem; font-family: 'Poppins', sans-serif; }
-    .logo-ml      { background: #FFE600; font-size: 1.5rem; }
-    .logo-amazon  { background: #1A1A1A; flex-direction: column; gap: 0; }
-    .logo-shein   { background: #1A1A1A; color: #fff; font-size: 1.4rem; font-family: Georgia, serif; }
+    .card-text { flex: 1; }
 
-    .amazon-a     { color: #fff; font-family: 'Times New Roman', serif; font-size: 1.25rem; font-style: italic; line-height: 1; }
-    .amazon-arrow { color: #FF9900; font-size: 0.62rem; line-height: 1; }
-
-    /* ── Platform info ────────────────────────────── */
-    .platform-info { min-width: 86px; }
-
-    .pname {
+    .card-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.82rem;
       font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: var(--brown-dark);
-      letter-spacing: 0.3px;
       line-height: 1.3;
     }
 
-    .pcookie {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.55rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: var(--taupe);
-      letter-spacing: 0.5px;
+    .card-desc {
+      font-size: 0.64rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      margin-top: 3px;
+      line-height: 1.5;
     }
 
-    /* ── Dotted divider ───────────────────────────── */
-    .dots-divider {
-      width: 2.5px;
-      min-width: 2.5px;
-      height: 36px;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        var(--salmon) 0px, var(--salmon) 4px,
-        transparent 4px, transparent 9px
-      );
-    }
-
-    /* ── Link button ──────────────────────────────── */
-    .link-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 8px 6px;
-      border: 1.5px solid var(--peach);
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.6rem;
+    .card-arrow {
+      font-size: 1.3rem;
+      color: var(--terracotta);
       font-weight: 700;
-      letter-spacing: 0.9px;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      text-decoration: none;
-      text-align: center;
-      transition: background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-
-    .link-btn:hover {
-      background: var(--terracotta);
-      color: #fff;
-      border-color: var(--terracotta);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(197, 106, 69, 0.35);
-    }
-
-    /* ── Row decorative icon ──────────────────────── */
-    .row-deco {
-      font-size: 1.7rem;
-      text-align: center;
-      width: 36px;
-      min-width: 36px;
-    }
-
-    /* ══════════════════════════════════════════
-       TIPS BOX
-    ══════════════════════════════════════════ */
-    .tips-box {
-      background: var(--peach);
-      border-radius: 16px;
-      padding: 15px 14px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .tips-heart {
-      font-size: 1.9rem;
-      color: var(--terracotta);
-      flex-shrink: 0;
-      margin-top: 1px;
       line-height: 1;
     }
 
-    .tips-content { flex: 1; }
-
-    .tips-title {
+    /* ══════════════════════════════════════════
+       SOCIAL SECTION
+    ══════════════════════════════════════════ */
+    .social-title {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.2rem;
+      font-size: 1.55rem;
       font-weight: 700;
-      color: var(--brown-dark);
-      margin-bottom: 5px;
-    }
-
-    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-
-    .tips-list li {
-      font-size: 0.68rem;
-      font-weight: 500;
       color: var(--brown-mid);
-      line-height: 1.45;
+      text-align: center;
+      margin-bottom: 14px;
     }
 
-    .simples-badge {
-      background: var(--terracotta);
-      color: #fff;
-      width: 62px;
-      height: 62px;
-      min-width: 62px;
-      border-radius: 50%;
+    .social-cards {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.56rem;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      line-height: 1.35;
+      gap: 10px;
     }
 
-    .simples-badge .badge-heart { font-size: 0.75rem; margin-top: 2px; }
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      border-radius: 18px;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--brown-dark);
+      box-shadow: 0 2px 14px rgba(197, 106, 69, 0.10);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-    .cookie-note {
+    .social-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(197, 106, 69, 0.22);
+    }
+
+    .social-card:active { transform: translateY(0); }
+
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icon-ig {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    }
+
+    .social-icon-tt { background: #010101; }
+
+    .social-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+    }
+
+    .social-text { flex: 1; }
+
+    .social-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--brown-dark);
+    }
+
+    .social-handle {
       font-size: 0.62rem;
       font-weight: 500;
       color: var(--brown-mid);
-      margin-top: 8px;
-      line-height: 1.5;
-      opacity: 0.85;
+      margin-top: 2px;
     }
 
     /* ══════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════ */
-    .footer { text-align: center; padding-top: 4px; }
-
-    .footer-obrigada {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--brown-mid);
-      margin-bottom: 2px;
-    }
-
-    .footer-diferenca {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--brown-mid);
-      margin-bottom: 14px;
-    }
-
-    /* Ruiva Garimpeira text logo */
-    .footer-brand {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.0;
-    }
-
-    .footer-brand-ruiva {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.55rem;
-      font-weight: 900;
-      color: var(--brown-mid);
-      letter-spacing: -0.3px;
-    }
-
-    .footer-brand-garimpeira {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--brown-mid);
+    .footer {
+      text-align: center;
+      padding-top: 32px;
     }
 
     .footer-logo-img {
-      width: 200px;
+      width: 190px;
       height: auto;
       display: block;
       margin: 0 auto;
       border-radius: 20px;
     }
 
-    /* ── Scattered background sparkles ───────── */
+    /* ── Sparkles ───────── */
     .sparkles-bg {
       position: fixed;
       inset: 0;
@@ -372,18 +269,14 @@
        RESPONSIVE
     ══════════════════════════════════════════ */
     @media (max-width: 380px) {
-      .hero { grid-template-columns: 126px 1fr; gap: 8px; }
-      .hero-mascot img { width: 122px; height: 122px; }
-      .pode-nos  { font-size: 1.6rem; }
-      .ajudar    { font-size: 2rem; }
-      .pname     { font-size: 0.7rem; }
-      .platform-info { min-width: 76px; }
+      .brand-ruiva { font-size: 2.1rem; }
+      .brand-garimpeira { font-size: 2.5rem; }
+      .hero-img { width: 140px; height: 140px; }
     }
   </style>
 </head>
 <body>
 
-<!-- scattered sparkles layer -->
 <div class="sparkles-bg" aria-hidden="true">
   <span class="sp" style="top:3%;left:7%;font-size:0.75rem;opacity:.55">✦</span>
   <span class="sp" style="top:2%;left:80%;font-size:0.55rem;opacity:.5">✧</span>
@@ -408,147 +301,69 @@
        HERO
   ══════════════════════════════════════════ -->
   <header class="hero">
-    <div class="hero-mascot">
-      <img src="ruivagarimpeiraimagem-logo.png" alt="Ruiva Garimpeira">
-    </div>
-    <div class="hero-content">
-      <p class="como-voce">Como você</p>
-      <p class="pode-nos">PODE NOS</p>
-      <p class="ajudar">ajudar</p>
-      <div class="badge-gastar">SEM GASTAR NADA A MAIS</div>
-      <p class="hero-desc">
-        Quando você compra pelos meus<br>
-        links de afiliada, eu ganho uma<br>
-        pequena comissão e isso ajuda<br>
-        muito nossa família! ♥
-      </p>
-    </div>
+    <img src="ruivagarimpeirainicial.png" alt="Ruiva Garimpeira" class="hero-img">
   </header>
 
   <!-- ══════════════════════════════════════════
-       LINKS DE AFILIADA
-       → Substitua o "#" de cada href pelo seu link
+       NAVEGAÇÃO
   ══════════════════════════════════════════ -->
-  <section class="links-section">
+  <div class="nav-cards">
 
-    <!-- SHOPEE -->
-    <div class="link-row">
-      <div class="link-card">
-        <div class="logo-circle logo-shopee">S</div>
-        <div class="platform-info">
-          <div class="pname">SHOPEE</div>
-          <div class="pcookie">Cookie: 7 dias</div>
-        </div>
-        <div class="dots-divider"></div>
-        <a href="https://s.shopee.com.br/17Dg5UayK" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+    <a href="vitrine/" class="nav-card">
+      <div class="card-icon">🔍</div>
+      <div class="card-text">
+        <div class="card-title">Todos os produtos</div>
+        <div class="card-desc">Meus achados favoritos garimpados pra você</div>
       </div>
-      <div class="row-deco">🛍️</div>
-    </div>
+      <span class="card-arrow">›</span>
+    </a>
 
-    <!-- MERCADO LIVRE -->
-    <div class="link-row">
-      <div class="link-card">
-        <div class="logo-circle logo-ml">🤝</div>
-        <div class="platform-info">
-          <div class="pname">MERCADO LIVRE</div>
-          <div class="pcookie">Cookie: 1 dia</div>
-        </div>
-        <div class="dots-divider"></div>
-        <a href="https://meli.la/1GJWKzV" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+    <a href="afiliados/" class="nav-card">
+      <div class="card-icon">🛍️</div>
+      <div class="card-text">
+        <div class="card-title">Links de Afiliada</div>
+        <div class="card-desc">Compre o que quiser e me apoie sem gastar nada a mais ♥</div>
       </div>
-      <div class="row-deco">📦</div>
-    </div>
+      <span class="card-arrow">›</span>
+    </a>
 
-    <!-- AMAZON BR -->
-    <div class="link-row">
-      <div class="link-card">
-        <div class="logo-circle logo-amazon" style="flex-direction:column;gap:1px;">
-          <span class="amazon-a">a</span>
-          <span class="amazon-arrow">──▸</span>
-        </div>
-        <div class="platform-info">
-          <div class="pname">AMAZON BR</div>
-          <div class="pcookie">Cookie: 24 horas</div>
-        </div>
-        <div class="dots-divider"></div>
-        <a href="https://amzn.to/4wzJbiP" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
-      </div>
-      <div class="row-deco">🛒</div>
-    </div>
-
-    <!-- AMAZON JP -->
-    <div class="link-row">
-      <div class="link-card">
-        <div class="logo-circle logo-amazon" style="flex-direction:column;gap:1px;">
-          <span class="amazon-a">a</span>
-          <span class="amazon-arrow">──▸</span>
-        </div>
-        <div class="platform-info">
-          <div class="pname">AMAZON JP</div>
-          <div class="pcookie">Cookie: 24 horas</div>
-        </div>
-        <div class="dots-divider"></div>
-        <a href="https://amzn.to/4uTQW1y" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
-      </div>
-      <div class="row-deco">🪭</div>
-    </div>
-
-    <!-- SHEIN BR -->
-    <div class="link-row">
-      <div class="link-card">
-        <div class="logo-circle logo-shein">S</div>
-        <div class="platform-info">
-          <div class="pname">SHEIN BR</div>
-          <div class="pcookie">Cookie: até 30 dias</div>
-        </div>
-        <div class="dots-divider"></div>
-        <a href="https://onelink.shein.com/8/5ptsgqp2wg8h" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
-      </div>
-      <div class="row-deco">🎀</div>
-    </div>
-
-    <!-- SHEIN JP -->
-    <div class="link-row">
-      <div class="link-card">
-        <div class="logo-circle logo-shein">S</div>
-        <div class="platform-info">
-          <div class="pname">SHEIN JP</div>
-          <div class="pcookie">Cookie: até 30 dias</div>
-        </div>
-        <div class="dots-divider"></div>
-        <a href="https://onelink.shein.com/8/5ptphlbnoh9t" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
-      </div>
-      <div class="row-deco">🎏</div>
-    </div>
-
-  </section>
+  </div>
 
   <!-- ══════════════════════════════════════════
-       DICAS RÁPIDAS
+       REDES SOCIAIS
   ══════════════════════════════════════════ -->
-  <div class="tips-box">
-    <div class="tips-heart">♥</div>
-    <div class="tips-content">
-      <h3 class="tips-title">Dicas rápidas ♥</h3>
-      <ul class="tips-list">
-        <li>♥ Clique no meu link antes de fazer suas compras.</li>
-        <li>♥ Navegue e compre normalmente no app/site.</li>
-        <li>♥ Assim, a compra pode contar como apoio pra mim!</li>
-      </ul>
-      <p class="cookie-note">🍪 <em>Cookie</em> é o tempo que o site lembra que você veio pelo meu link — enquanto não expirar, a compra conta pra mim!</p>
-    </div>
-    <div class="simples-badge">
-      <span>Simples<br>assim!</span>
-      <span class="badge-heart">♥</span>
-    </div>
+  <p class="social-title">Me encontre nas redes ♥</p>
+
+  <div class="social-cards">
+
+    <a href="https://www.instagram.com/ruivagarimpeira" target="_blank" rel="noopener" class="social-card">
+      <div class="social-icon social-icon-ig">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <div class="social-text">
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@ruivagarimpeira</div>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+
+    <a href="https://www.tiktok.com/@ruivagarimpeiraofc" target="_blank" rel="noopener" class="social-card">
+      <div class="social-icon social-icon-tt">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+      </div>
+      <div class="social-text">
+        <div class="social-name">TikTok</div>
+        <div class="social-handle">@ruivagarimpeiraofc</div>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+
   </div>
 
   <!-- ══════════════════════════════════════════
        FOOTER
   ══════════════════════════════════════════ -->
   <footer class="footer">
-    <p class="footer-obrigada">Obrigada de coração pelo apoio! ♥</p>
-    <p class="footer-diferenca">Vocês fazem toda a diferença ♥</p>
     <img src="ruivagarimpeiraescrita-logo.png" alt="Ruiva Garimpeira" class="footer-logo-img">
   </footer>
 

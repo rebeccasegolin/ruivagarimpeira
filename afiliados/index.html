@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./link.png" type="image/x-icon">
+  <title>Ruiva Garimpeira – Links de Afiliada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #F7E9DF;
+      --terracotta:   #C56A45;
+      --salmon:       #E9A78A;
+      --peach:        #F4C9B4;
+      --cream:        #F7E9DF;
+      --taupe:        #DCC3B1;
+      --brown-mid:    #7A4A2F;
+      --brown-dark:   #4D2E1F;
+      --white:        #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      color: var(--brown-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 500px;
+      padding: 30px 18px 48px;
+    }
+
+    /* ── Back link ─────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--brown-mid);
+      text-decoration: none;
+      margin-bottom: 20px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      display: grid;
+      grid-template-columns: 152px 1fr;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .hero-mascot img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .hero-content { display: flex; flex-direction: column; }
+
+    .como-voce {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--brown-dark);
+    }
+
+    .pode-nos {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--brown-dark);
+    }
+
+    .ajudar {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--brown-mid);
+      line-height: 1.15;
+    }
+
+    .badge-gastar {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.54rem;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin: 8px 0;
+      white-space: nowrap;
+    }
+
+    .hero-desc {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════════
+       AFFILIATE ROWS
+    ══════════════════════════════════════════ */
+    .links-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .link-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link-card {
+      flex: 1;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 11px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 12px rgba(197, 106, 69, 0.10);
+    }
+
+    .logo-circle {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .logo-shopee  { background: #EE4D2D; color: #fff; font-size: 1.5rem; font-family: 'Poppins', sans-serif; }
+    .logo-ml      { background: #FFE600; font-size: 1.5rem; }
+    .logo-amazon  { background: #1A1A1A; flex-direction: column; gap: 0; }
+    .logo-shein   { background: #1A1A1A; color: #fff; font-size: 1.4rem; font-family: Georgia, serif; }
+
+    .amazon-a     { color: #fff; font-family: 'Times New Roman', serif; font-size: 1.25rem; font-style: italic; line-height: 1; }
+    .amazon-arrow { color: #FF9900; font-size: 0.62rem; line-height: 1; }
+
+    .platform-info { min-width: 86px; }
+
+    .pname {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+    }
+
+    .pcookie {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--taupe);
+      letter-spacing: 0.5px;
+    }
+
+    .dots-divider {
+      width: 2.5px;
+      min-width: 2.5px;
+      height: 36px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        var(--salmon) 0px, var(--salmon) 4px,
+        transparent 4px, transparent 9px
+      );
+    }
+
+    .link-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 6px;
+      border: 1.5px solid var(--peach);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .link-btn:hover {
+      background: var(--terracotta);
+      color: #fff;
+      border-color: var(--terracotta);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(197, 106, 69, 0.35);
+    }
+
+    .row-deco {
+      font-size: 1.7rem;
+      text-align: center;
+      width: 36px;
+      min-width: 36px;
+    }
+
+    /* ══════════════════════════════════════════
+       TIPS BOX
+    ══════════════════════════════════════════ */
+    .tips-box {
+      background: var(--peach);
+      border-radius: 16px;
+      padding: 15px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .tips-heart {
+      font-size: 1.9rem;
+      color: var(--terracotta);
+      flex-shrink: 0;
+      margin-top: 1px;
+      line-height: 1;
+    }
+
+    .tips-content { flex: 1; }
+
+    .tips-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 5px;
+    }
+
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+
+    .tips-list li {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      line-height: 1.45;
+    }
+
+    .simples-badge {
+      background: var(--terracotta);
+      color: #fff;
+      width: 62px;
+      height: 62px;
+      min-width: 62px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      line-height: 1.35;
+    }
+
+    .simples-badge .badge-heart { font-size: 0.75rem; margin-top: 2px; }
+
+    .cookie-note {
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      margin-top: 8px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .footer { text-align: center; padding-top: 4px; }
+
+    .footer-obrigada {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      margin-bottom: 2px;
+    }
+
+    .footer-diferenca {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brown-mid);
+      margin-bottom: 14px;
+    }
+
+    .footer-logo-img {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 20px;
+    }
+
+    /* ── Sparkles ───────── */
+    .sparkles-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .sp {
+      position: absolute;
+      color: var(--salmon);
+      user-select: none;
+      line-height: 1;
+    }
+
+    @media (max-width: 380px) {
+      .hero { grid-template-columns: 126px 1fr; gap: 8px; }
+      .hero-mascot img { width: 122px; height: 122px; }
+      .pode-nos  { font-size: 1.6rem; }
+      .ajudar    { font-size: 2rem; }
+      .pname     { font-size: 0.7rem; }
+      .platform-info { min-width: 76px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sparkles-bg" aria-hidden="true">
+  <span class="sp" style="top:3%;left:7%;font-size:0.75rem;opacity:.55">✦</span>
+  <span class="sp" style="top:2%;left:80%;font-size:0.55rem;opacity:.5">✧</span>
+  <span class="sp" style="top:8%;left:93%;font-size:0.65rem;opacity:.4">✦</span>
+  <span class="sp" style="top:14%;left:2%;font-size:0.5rem;opacity:.45">✧</span>
+  <span class="sp" style="top:21%;left:88%;font-size:0.7rem;opacity:.5">✦</span>
+  <span class="sp" style="top:27%;left:4%;font-size:0.6rem;opacity:.4">✦</span>
+  <span class="sp" style="top:35%;left:92%;font-size:0.5rem;opacity:.45">✧</span>
+  <span class="sp" style="top:43%;left:2%;font-size:0.7rem;opacity:.5">✦</span>
+  <span class="sp" style="top:50%;left:90%;font-size:0.6rem;opacity:.4">✦</span>
+  <span class="sp" style="top:57%;left:6%;font-size:0.55rem;opacity:.5">✧</span>
+  <span class="sp" style="top:65%;left:94%;font-size:0.75rem;opacity:.45">✦</span>
+  <span class="sp" style="top:72%;left:3%;font-size:0.5rem;opacity:.4">✦</span>
+  <span class="sp" style="top:80%;left:86%;font-size:0.65rem;opacity:.5">✧</span>
+  <span class="sp" style="top:88%;left:5%;font-size:0.7rem;opacity:.45">✦</span>
+  <span class="sp" style="top:95%;left:78%;font-size:0.55rem;opacity:.4">✦</span>
+</div>
+
+<div class="page">
+
+  <a href="../" class="back-link">← Voltar ao início</a>
+
+  <header class="hero">
+    <div class="hero-mascot">
+      <img src="../ruivagarimpeiraimagem-logo.png" alt="Ruiva Garimpeira">
+    </div>
+    <div class="hero-content">
+      <p class="como-voce">Como você</p>
+      <p class="pode-nos">PODE NOS</p>
+      <p class="ajudar">ajudar</p>
+      <div class="badge-gastar">SEM GASTAR NADA A MAIS</div>
+      <p class="hero-desc">
+        Quando você compra pelos meus<br>
+        links de afiliada, eu ganho uma<br>
+        pequena comissão e isso ajuda<br>
+        muito nossa família! ♥
+      </p>
+    </div>
+  </header>
+
+  <section class="links-section">
+
+    <!-- SHOPEE -->
+    <div class="link-row">
+      <div class="link-card">
+        <div class="logo-circle logo-shopee">S</div>
+        <div class="platform-info">
+          <div class="pname">SHOPEE</div>
+          <div class="pcookie">Cookie: 7 dias</div>
+        </div>
+        <div class="dots-divider"></div>
+        <a href="https://s.shopee.com.br/17Dg5UayK" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+      </div>
+      <div class="row-deco">🛍️</div>
+    </div>
+
+    <!-- MERCADO LIVRE -->
+    <div class="link-row">
+      <div class="link-card">
+        <div class="logo-circle logo-ml">🤝</div>
+        <div class="platform-info">
+          <div class="pname">MERCADO LIVRE</div>
+          <div class="pcookie">Cookie: 1 dia</div>
+        </div>
+        <div class="dots-divider"></div>
+        <a href="https://meli.la/1GJWKzV" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+      </div>
+      <div class="row-deco">📦</div>
+    </div>
+
+    <!-- AMAZON BR -->
+    <div class="link-row">
+      <div class="link-card">
+        <div class="logo-circle logo-amazon" style="flex-direction:column;gap:1px;">
+          <span class="amazon-a">a</span>
+          <span class="amazon-arrow">──▸</span>
+        </div>
+        <div class="platform-info">
+          <div class="pname">AMAZON BR</div>
+          <div class="pcookie">Cookie: 24 horas</div>
+        </div>
+        <div class="dots-divider"></div>
+        <a href="https://amzn.to/4wzJbiP" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+      </div>
+      <div class="row-deco">🛒</div>
+    </div>
+
+    <!-- AMAZON JP -->
+    <div class="link-row">
+      <div class="link-card">
+        <div class="logo-circle logo-amazon" style="flex-direction:column;gap:1px;">
+          <span class="amazon-a">a</span>
+          <span class="amazon-arrow">──▸</span>
+        </div>
+        <div class="platform-info">
+          <div class="pname">AMAZON JP</div>
+          <div class="pcookie">Cookie: 24 horas</div>
+        </div>
+        <div class="dots-divider"></div>
+        <a href="https://amzn.to/4uTQW1y" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+      </div>
+      <div class="row-deco">🪭</div>
+    </div>
+
+    <!-- SHEIN BR -->
+    <div class="link-row">
+      <div class="link-card">
+        <div class="logo-circle logo-shein">S</div>
+        <div class="platform-info">
+          <div class="pname">SHEIN BR</div>
+          <div class="pcookie">Cookie: até 30 dias</div>
+        </div>
+        <div class="dots-divider"></div>
+        <a href="https://onelink.shein.com/8/5ptsgqp2wg8h" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+      </div>
+      <div class="row-deco">🎀</div>
+    </div>
+
+    <!-- SHEIN JP -->
+    <div class="link-row">
+      <div class="link-card">
+        <div class="logo-circle logo-shein">S</div>
+        <div class="platform-info">
+          <div class="pname">SHEIN JP</div>
+          <div class="pcookie">Cookie: até 30 dias</div>
+        </div>
+        <div class="dots-divider"></div>
+        <a href="https://onelink.shein.com/8/5ptphlbnoh9t" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+      </div>
+      <div class="row-deco">🎏</div>
+    </div>
+
+  </section>
+
+  <div class="tips-box">
+    <div class="tips-heart">♥</div>
+    <div class="tips-content">
+      <h3 class="tips-title">Dicas rápidas ♥</h3>
+      <ul class="tips-list">
+        <li>♥ Clique no meu link antes de fazer suas compras.</li>
+        <li>♥ Navegue e compre normalmente no app/site.</li>
+        <li>♥ Assim, a compra pode contar como apoio pra mim!</li>
+      </ul>
+      <p class="cookie-note">🍪 <em>Cookie</em> é o tempo que o site lembra que você veio pelo meu link — enquanto não expirar, a compra conta pra mim!</p>
+    </div>
+    <div class="simples-badge">
+      <span>Simples<br>assim!</span>
+      <span class="badge-heart">♥</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class="footer-obrigada">Obrigada de coração pelo apoio! ♥</p>
+    <p class="footer-diferenca">Vocês fazem toda a diferença ♥</p>
+    <img src="../ruivagarimpeiraescrita-logo.png" alt="Ruiva Garimpeira" class="footer-logo-img">
+  </footer>
+
+</div>
+</body>
+</html>

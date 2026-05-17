@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="shortcut icon" href="store.png"image/x-icon">
+<title>Ruiva Garimpeira - Vitrine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terra:  #C56A45;
+  --terra2: #a8522f;
+  --rosa:   #E9A78A;
+  --rclaro: #F4C9B4;
+  --off:    #F7E9DF;
+  --bege:   #DCC3B1;
+  --marrom: #7A4A2F;
+  --choc:   #4D2E1F;
+  --white:  #ffffff;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{font-family:'Poppins',sans-serif;font-weight:300;background:var(--off);color:var(--choc);min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.3;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+
+/* HEADER */
+header{position:relative;z-index:1;text-align:center;padding:8px 16px 6px;background:linear-gradient(180deg,#fff 0%,var(--off) 100%);border-bottom:1px solid var(--rclaro);display:flex;align-items:center;justify-content:center}
+.logo-img{width:clamp(100px,38vw,160px);height:auto;display:block}
+.header-bio{display:none}
+
+/* SEARCH */
+.search-wrap{position:relative;z-index:1;padding:6px 12px 0;max-width:680px;margin:0 auto}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--rclaro);border-radius:100px;padding:7px 14px;transition:border-color .2s}
+.search-box:focus-within{border-color:var(--terra)}
+.si{font-size:.85rem;flex-shrink:0;opacity:.45}
+.search-input{flex:1;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:300;color:var(--choc);background:transparent}
+.search-input::placeholder{color:var(--bege)}
+.sc{background:none;border:none;color:var(--bege);font-size:1rem;cursor:pointer;padding:0 2px;display:none;line-height:1}
+.sc.show{display:block}
+
+/* FILTERS */
+.filters-wrap{position:sticky;top:0;z-index:50;background:var(--off);border-bottom:1px solid var(--rclaro)}
+.filter-row{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.filter-row::-webkit-scrollbar{display:none}
+.ftab{font-family:'Poppins',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border:none;background:transparent;color:var(--marrom);cursor:pointer;border-bottom:2.5px solid transparent;transition:all .2s;white-space:nowrap;opacity:.55;flex-shrink:0}
+.ftab:hover{opacity:.85;color:var(--terra)}
+.ftab.on{color:var(--terra);border-bottom-color:var(--terra);opacity:1}
+.store-bar{display:flex;gap:6px;padding:6px 12px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(220,195,177,.4)}
+.store-bar::-webkit-scrollbar{display:none}
+.spill{font-family:'Poppins',sans-serif;font-size:.56rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:100px;border:1.5px solid var(--bege);background:transparent;color:var(--marrom);cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;opacity:.65}
+.spill:hover{border-color:var(--terra);color:var(--terra);opacity:1}
+.spill.on{background:var(--terra);border-color:var(--terra);color:#fff;opacity:1}
+
+.results-info{padding:4px 14px 0;font-size:.6rem;color:var(--marrom);opacity:.45;letter-spacing:.04em;max-width:680px;margin:0 auto;position:relative;z-index:1}
+
+/* GRID */
+.page{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px}
+
+@keyframes fadeIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+
+/* CARD */
+.pcard{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;background:var(--bege);display:block;text-decoration:none;border-radius:3px}
+.pcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.25,.46,.45,.94)}
+.pcard:hover img,.pcard:active img{transform:scale(1.06)}
+.pcard-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(77,46,31,.9) 0%,rgba(77,46,31,.2) 55%,transparent 100%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:10px}
+.pcard:hover .pcard-ov,.pcard:active .pcard-ov{opacity:1}
+.pcard-name{font-family:'DM Serif Display',serif;font-style:italic;font-size:.8rem;color:#fff;line-height:1.2;margin-bottom:2px}
+.pcard-loja{font-size:.52rem;font-weight:500;color:var(--rclaro);letter-spacing:.06em;text-transform:uppercase}
+.badge-loja{position:absolute;top:7px;left:7px;background:rgba(77,46,31,.8);color:#fff;font-size:.46rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:100px;backdrop-filter:blur(4px)}
+.badge-cat{position:absolute;top:7px;right:7px;background:rgba(197,106,69,.85);color:#fff;font-size:.44rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:100px;backdrop-filter:blur(4px)}
+.pcard-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--rclaro);font-size:.65rem;color:var(--marrom);font-weight:500;text-align:center;padding:10px;line-height:1.3}
+.pcard-ph .phi{font-size:1.6rem;opacity:.4}
+
+/* LOADING / EMPTY */
+.loading{text-align:center;padding:60px 20px;position:relative;z-index:1}
+.loading p{font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:var(--marrom);opacity:.5;margin-top:16px}
+.spinner{width:32px;height:32px;border:2.5px solid var(--rclaro);border-top-color:var(--terra);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:52px 20px;position:relative;z-index:1}
+.empty p{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;color:var(--marrom);opacity:.45}
+.empty small{display:block;font-size:.65rem;color:var(--marrom);opacity:.3;margin-top:5px;font-family:'Poppins',sans-serif;font-weight:300}
+
+/* PRODUCT MODAL */
+.modal-bg{display:none;position:fixed;inset:0;z-index:200;background:rgba(77,46,31,.52);backdrop-filter:blur(5px);align-items:flex-end;justify-content:center}
+.modal-bg.open{display:flex}
+.modal{background:var(--white);border-radius:22px 22px 0 0;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;animation:slideUp .35s cubic-bezier(.16,1,.3,1)}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-handle{width:40px;height:4px;border-radius:100px;background:var(--bege);margin:16px auto 0}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px}
+.modal-head-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:var(--choc)}
+.modal-x{background:var(--off);border:none;width:32px;height:32px;border-radius:50%;color:var(--marrom);font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pm-img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.pm-body{padding:18px 20px 36px}
+.pm-pills{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.pm-pill{font-size:.52rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px}
+.pm-pill.loja{background:var(--rclaro);color:var(--marrom)}
+.pm-pill.cat{background:var(--off);color:var(--terra);border:1px solid var(--rclaro)}
+.pm-pill.cod{background:#f0f0f0;color:#888;font-family:monospace;letter-spacing:0;font-size:.55rem}
+.pm-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.45rem;color:var(--choc);line-height:1.25;margin-bottom:20px}
+.pm-btn{display:block;width:100%;background:var(--terra);color:#fff;border:none;border-radius:100px;padding:15px;text-align:center;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-decoration:none;cursor:pointer;transition:background .2s}
+.pm-btn:hover,.pm-btn:active{background:var(--terra2)}
+
+/* ERROR BANNER */
+.err-banner{display:none;position:relative;z-index:1;max-width:680px;margin:12px auto 0;padding:12px 16px;background:rgba(201,100,80,.1);border:1px solid rgba(201,100,80,.3);border-radius:8px;font-size:.72rem;color:#a04030;line-height:1.6;text-align:center}
+.err-banner a{color:var(--terra);font-weight:500}
+
+footer{position:relative;z-index:1;text-align:center;padding:28px 20px 60px;font-size:.6rem;color:var(--marrom);letter-spacing:.04em}
+.footer-links{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px}
+.footer-link{display:flex;align-items:center;gap:5px;color:var(--marrom);text-decoration:none;font-size:.7rem;font-weight:500;opacity:.6;transition:opacity .2s}
+.footer-link:hover{opacity:1}
+.footer-link svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+.footer-copy{opacity:.3;font-size:.58rem}
+
+@media(max-width:360px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+  ⚙️  CONFIGURAÇÃO — edite só esta parte
+════════════════════════════════════════════ -->
+<script>
+// Cole aqui a URL CSV da sua planilha publicada.
+// No Google Sheets: Arquivo → Compartilhar → Publicar na web
+// → Escolha a aba → Formato: CSV → Publicar → copie o link
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS4DwAIWrEho5PTFk-lPv59Zcvux11p_nvnq1cBgiPtr1gl5ftuay0YRQ8diuccR5fsNDt_SyT_PikL/pub?output=csv';
+</script>
+<!-- ════════════════════════════════════════════ -->
+
+<header>
+  <img src="ruivagarimpeiraescrita-logo.png" alt="Ruiva Garimpeira" class="logo-img"/>
+  <div class="header-bio">Vitrine de achados da ruiva</div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="si">🔍</span>
+    <input class="search-input" id="search" type="text" placeholder="Buscar código ou nome do produto..." oninput="onSearch(this.value)" autocomplete="off"/>
+    <button class="sc" id="sc" onclick="clearSearch()">✕</button>
+  </div>
+</div>
+
+<div id="err-banner" class="err-banner"></div>
+
+<div class="filters-wrap">
+  <div class="filter-row" id="cat-tabs"></div>
+  <div class="store-bar" id="store-pills"></div>
+</div>
+
+<div class="results-info" id="results-info"></div>
+
+<div class="page">
+  <div class="grid" id="grid"></div>
+  <div id="loading" class="loading"><div class="spinner"></div><p>Carregando achados...</p></div>
+  <div id="empty" class="empty" style="display:none"><p>Nenhum achado encontrado ♡</p><small>Tente outro termo ou categoria</small></div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a class="footer-link" href="https://www.instagram.com/ruivagarimpeira" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      @ruivagarimpeira
+    </a>
+    <a class="footer-link" href="https://www.tiktok.com/@ruivagarimpeiraofc" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+      @ruivagarimpeiraofc
+    </a>
+  </div>
+  <div class="footer-copy">ruiva garimpeira ♡ achados que valem cada real</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <span class="modal-head-title" id="m-title-top">Produto</span>
+      <button class="modal-x" onclick="closeModalDirect()">✕</button>
+    </div>
+    <img id="m-img" src="" alt="" style="display:none;width:100%;aspect-ratio:1/1;object-fit:cover"/>
+    <div class="pm-body">
+      <div class="pm-pills" id="m-pills"></div>
+      <div class="pm-title" id="m-title"></div>
+      <a class="pm-btn" id="m-btn" href="#" target="_blank" rel="noopener">Garimpei o link pra você 🔗</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════ STATE ═══════════ */
+let products = [];
+let activeCat   = 'Todas';
+let activeStore = 'Todas';
+let searchQ     = '';
+
+/* ═══════════ BOOT ═══════════ */
+document.addEventListener('DOMContentLoaded', loadSheet);
+
+/* ═══════════ LOAD GOOGLE SHEETS ═══════════ */
+async function fetchWithTimeout(url, ms = 10000) {
+  const ctrl = new AbortController();
+  const id = setTimeout(() => ctrl.abort(), ms);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(id);
+    return res;
+  } catch(e) {
+    clearTimeout(id);
+    throw e;
+  }
+}
+
+async function loadSheet() {
+  const proxies = [
+    u => 'https://corsproxy.io/?' + encodeURIComponent(u),
+    u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+    u => 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(u),
+  ];
+
+  let lastErr = null;
+  for (const makeUrl of proxies) {
+    try {
+      const res = await fetchWithTimeout(makeUrl(SHEET_CSV_URL), 12000);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const csv = await res.text();
+      if (!csv.trim()) throw new Error('Resposta vazia');
+      products = parseCSV(csv);
+      document.getElementById('loading').style.display = 'none';
+      renderAll();
+      return;
+    } catch(e) {
+      lastErr = e;
+    }
+  }
+
+  document.getElementById('loading').style.display = 'none';
+  const banner = document.getElementById('err-banner');
+  banner.style.display = 'block';
+  banner.innerHTML = '⚠️ Não foi possível carregar os produtos.<br>'
+    + 'Verifique se a planilha está publicada como CSV.<br>'
+    + '<small>' + (lastErr ? lastErr.message : '') + '</small>';
+}
+
+/* ═══════════ CSV PARSER ═══════════ */
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+
+  // Detecta separador (vírgula ou ponto-e-vírgula)
+  const sep = lines[0].includes(';') ? ';' : ',';
+  const headers = splitCSVLine(lines[0], sep).map(h => h.trim().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')  // remove acentos
+    .replace(/\s+/g,'_'));
+
+  const idx = {};
+  // Mapeia variações de nome de coluna para chave padrão
+  const aliases = {
+    codigo: 'codigo', code: 'codigo',
+    nome:   'nome',   name: 'nome', produto: 'nome',
+    loja:   'loja',   store: 'loja', plataforma: 'loja',
+    categoria:'categoria', category:'categoria', cat:'categoria',
+    imagem: 'imagem', image:'imagem', img:'imagem', foto:'imagem',
+    link:   'link',   url:'link', href:'link',
+  };
+  headers.forEach((h,i) => { if (aliases[h]) idx[aliases[h]] = i; });
+
+  return lines.slice(1).map(line => {
+    const cols = splitCSVLine(line, sep);
+    const get  = key => (cols[idx[key]] || '').trim().replace(/^"|"$/g,'').trim();
+    return {
+      codigo:    get('codigo'),
+      nome:      get('nome'),
+      loja:      get('loja'),
+      categoria: get('categoria'),
+      imagem:    toDirectImage(get('imagem')),
+      link:      get('link'),
+    };
+  }).filter(p => p.nome); // ignora linhas sem nome
+}
+
+function toDirectImage(url) {
+  if (!url) return '';
+  // Google Drive: /file/d/ID/view ou /open?id=ID ou /uc?id=ID
+  const m = url.match(/(?:\/d\/|[?&]id=)([\w-]{20,})/);
+  if (m) return 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w600';
+  return url;
+}
+
+function splitCSVLine(line, sep) {
+  // Respeita campos entre aspas
+  const result = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') { inQ = !inQ; }
+    else if (c === sep && !inQ) { result.push(cur); cur = ''; }
+    else { cur += c; }
+  }
+  result.push(cur);
+  return result;
+}
+
+/* ═══════════ FILTERS ═══════════ */
+function filtered() {
+  return products.filter(p => {
+    const mc = activeCat   === 'Todas' || p.categoria === activeCat;
+    const ms = activeStore === 'Todas' || p.loja      === activeStore;
+    const q  = searchQ.toLowerCase().trim();
+    const mq = !q || p.nome.toLowerCase().includes(q)
+                  || p.categoria.toLowerCase().includes(q)
+                  || p.loja.toLowerCase().includes(q)
+                  || p.codigo.toLowerCase().includes(q);
+    return mc && ms && mq;
+  });
+}
+
+/* ═══════════ RENDER ═══════════ */
+function renderAll() {
+  renderCatTabs();
+  renderStorePills();
+  renderGrid();
+}
+
+function renderCatTabs() {
+  const cats = ['Todas', ...new Set(products.map(p => p.categoria).filter(Boolean))].sort((a,b) => a==='Todas'?-1:b==='Todas'?1:a.localeCompare(b));
+  document.getElementById('cat-tabs').innerHTML = cats.map(c => {
+    const cnt = c === 'Todas' ? products.length : products.filter(p => p.categoria === c).length;
+    return `<button class="ftab${c===activeCat?' on':''}" onclick="setCat('${esc(c)}',this)">${esc(c)} <span style="opacity:.5;font-size:.85em">${cnt}</span></button>`;
+  }).join('');
+}
+
+function renderStorePills() {
+  const stores = ['Todas', ...new Set(products.map(p => p.loja).filter(Boolean))].sort((a,b) => a==='Todas'?-1:b==='Todas'?1:a.localeCompare(b));
+  document.getElementById('store-pills').innerHTML = stores.map(s =>
+    `<button class="spill${s===activeStore?' on':''}" onclick="setStore('${esc(s)}',this)">${esc(s)}</button>`
+  ).join('');
+}
+
+function renderGrid() {
+  const list = filtered();
+  const grid  = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const info  = document.getElementById('results-info');
+
+  const total = products.length;
+  const showing = list.length;
+  if (searchQ || activeCat !== 'Todas' || activeStore !== 'Todas') {
+    info.textContent = `${showing} produto${showing!==1?'s':''} encontrado${showing!==1?'s':''}`;
+  } else {
+    info.textContent = `${total} produto${total!==1?'s':''} na vitrine`;
+  }
+
+  if (!list.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  grid.innerHTML = list.map((p, i) => `
+    <div class="pcard" onclick="openModal(${products.indexOf(p)})" style="animation:fadeIn .4s ${Math.min(i,.2)*0.05}s ease both">
+      ${p.imagem
+        ? `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+           <div class="pcard-ph" style="display:none"><div class="phi">🛍️</div>${esc(p.nome)}</div>`
+        : `<div class="pcard-ph"><div class="phi">🛍️</div>${esc(p.nome)}</div>`}
+      ${p.loja     ? `<span class="badge-loja">${esc(p.loja)}</span>` : ''}
+      ${p.categoria? `<span class="badge-cat">${esc(p.categoria)}</span>` : ''}
+      <div class="pcard-ov">
+        <div class="pcard-name">${esc(p.nome)}</div>
+        ${p.loja ? `<div class="pcard-loja">${esc(p.loja)}</div>` : ''}
+      </div>
+    </div>`).join('');
+}
+
+/* ═══════════ FILTER ACTIONS ═══════════ */
+function setCat(c, el) {
+  activeCat = c;
+  document.querySelectorAll('.ftab').forEach(x => x.classList.remove('on'));
+  el.classList.add('on');
+  renderGrid();
+}
+function setStore(s, el) {
+  activeStore = s;
+  document.querySelectorAll('.spill').forEach(x => x.classList.remove('on'));
+  el.classList.add('on');
+  renderGrid();
+}
+function onSearch(v) {
+  searchQ = v;
+  document.getElementById('sc').classList.toggle('show', v.length > 0);
+  renderGrid();
+}
+function clearSearch() {
+  document.getElementById('search').value = '';
+  searchQ = '';
+  document.getElementById('sc').classList.remove('show');
+  renderGrid();
+}
+
+/* ═══════════ MODAL ═══════════ */
+function openModal(idx) {
+  const p = products[idx]; if (!p) return;
+  const img = document.getElementById('m-img');
+  if (p.imagem) { img.src = p.imagem; img.style.display = 'block'; img.onerror = () => img.style.display='none'; }
+  else img.style.display = 'none';
+
+  document.getElementById('m-title-top').textContent = p.nome;
+  document.getElementById('m-title').textContent     = p.nome;
+  document.getElementById('m-pills').innerHTML = [
+    p.loja      ? `<span class="pm-pill loja">${esc(p.loja)}</span>` : '',
+    p.categoria ? `<span class="pm-pill cat">${esc(p.categoria)}</span>` : '',
+    p.codigo    ? `<span class="pm-pill cod">#${esc(p.codigo)}</span>` : '',
+  ].join('');
+  document.getElementById('m-btn').href = p.link || '#';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(e) { if (e.target === document.getElementById('modal')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modal').classList.remove('open'); }
+
+// swipe down to close
+const modalEl = document.querySelector('.modal');
+let sy = 0;
+modalEl.addEventListener('touchstart', e => { sy = e.touches[0].clientY; }, {passive:true});
+modalEl.addEventListener('touchend', e => { if (e.changedTouches[0].clientY - sy > 80) closeModalDirect(); }, {passive:true});
+
+/* ═══════════ UTILS ═══════════ */
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
