@@ -278,7 +278,7 @@ function parseCSV(text) {
       imagem:    toDirectImage(get('imagem')),
       link:      get('link'),
     };
-  }).filter(p => p.nome); // ignora linhas sem nome
+  }).filter(p => p.nome).reverse(); // mais recentes primeiro
 }
 
 function toDirectImage(url) {

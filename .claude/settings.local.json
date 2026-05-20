@@ -14,7 +14,17 @@
       "PowerShell($tmp = [System.IO.Path]::GetTempFileName\\(\\) + \".json\"; [System.IO.File]::WriteAllText\\($tmp, '{\"source\":{\"branch\":\"main\",\"path\":\"/\"}}', [System.Text.UTF8Encoding]::new\\($false\\)\\); & \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" api repos/rebeccasegolin/ruivagarimpeira/pages --method POST --input $tmp 2>&1; Remove-Item $tmp)",
       "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" api repos/rebeccasegolin/ruivagarimpeira/deployments --jq '.[0] | {state: .statuses_url, env: .environment, created: .created_at, sha: .sha}' 2>&1)",
       "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" api repos/rebeccasegolin/ruivagarimpeira/pages/builds --jq '.[0] | {status: .status, commit: .commit, error: .error}' 2>&1)",
-      "PowerShell($r = Invoke-WebRequest \"https://rebeccasegolin.github.io/ruivagarimpeira/\" -UseBasicParsing; $r.StatusCode; $r.Content | Select-String \"ruivagarimpeiraescrita\" | Select-Object -First 1)"
+      "PowerShell($r = Invoke-WebRequest \"https://rebeccasegolin.github.io/ruivagarimpeira/\" -UseBasicParsing; $r.StatusCode; $r.Content | Select-String \"ruivagarimpeiraescrita\" | Select-Object -First 1)",
+      "Bash(mkdir -p \"c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira\\\\afiliados\")",
+      "Bash(git -C \"c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira\" remote -v)",
+      "Bash(git -C \"c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira\" status)",
+      "Bash(git -C \"c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira\" log --oneline -5)",
+      "Bash(git -C \"c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira\" add index.html afiliados/ vitrine/)",
+      "Bash(git -C 'c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira' commit -m ' *)",
+      "Bash(git -C \"c:\\\\Users\\\\bebec\\\\Desktop\\\\ruivagarimpeira\" push origin main)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\bebec\\Desktop\\ruivagarimpeira"
     ]
   }
 }
