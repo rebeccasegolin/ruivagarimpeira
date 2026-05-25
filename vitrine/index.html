@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="../store.png" type="image/x-icon">
+<link rel="shortcut icon" href="./store.png" type="image/x-icon">
 <title>Ruiva Garimpeira — Vitrine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -266,6 +266,22 @@ footer {
   flex-shrink: 0;
 }
 
+/* ── BACK LINK ── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--marrom);
+  text-decoration: none;
+  opacity: .65;
+  transition: opacity .2s;
+}
+.back-link:hover { opacity: 1; }
+
 .footer-copy {
   font-size: .56rem;
   color: var(--marrom);
@@ -284,6 +300,8 @@ footer {
 </header>
 
 <main>
+  <a href="../" class="back-link">← Voltar ao início</a>
+
   <div class="section-label">minhas vitrines</div>
 
   <!-- Shopee -->
