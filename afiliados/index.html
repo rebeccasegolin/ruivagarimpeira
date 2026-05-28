@@ -311,6 +311,74 @@
       opacity: 0.85;
     }
 
+    /* ── Shein notice ───────────────────────────── */
+    .shein-note {
+      background: #fff;
+      border: 1.5px solid var(--peach);
+      border-radius: 16px;
+      padding: 15px 14px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .shein-note-icon { font-size: 1.55rem; flex-shrink: 0; line-height: 1; }
+
+    .shein-note-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 5px;
+    }
+
+    .shein-note-text {
+      font-size: 0.66rem;
+      color: var(--brown-mid);
+      line-height: 1.55;
+    }
+
+    .shein-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 8px 0 11px;
+    }
+
+    .shein-steps li {
+      font-size: 0.66rem;
+      color: var(--brown-mid);
+      line-height: 1.4;
+    }
+
+    .shein-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 7px 15px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .shein-cta:hover { background: #a8522f; }
+
+    .link-btn-off {
+      opacity: 0.32;
+      cursor: default;
+      pointer-events: none;
+      border-style: dashed;
+      font-size: 0.54rem;
+    }
+
     /* ══════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════ */
@@ -489,16 +557,34 @@
       <div class="row-deco">🪭</div>
     </div>
 
+    <!-- SHEIN NOTICE -->
+    <div class="shein-note">
+      <div class="shein-note-icon">🌸</div>
+      <div>
+        <h3 class="shein-note-title">Shein funciona diferente!</h3>
+        <p class="shein-note-text">
+          Na Shein o cookie <strong>não conta</strong> — ela só paga comissão quando eu converto o link de cada produto individualmente.
+        </p>
+        <ul class="shein-steps">
+          <li>🔍 Você achou algo na Shein que quer comprar</li>
+          <li>📩 Me manda o link do produto pelo Instagram</li>
+          <li>🔗 Eu te envio de volta com o meu link convertido</li>
+          <li>🛍️ Você compra pelo meu link e me apoia — sem pagar nada a mais!</li>
+        </ul>
+        <a href="https://www.instagram.com/ruivagarimpeira" target="_blank" rel="noopener" class="shein-cta">✉ Me envia no Instagram</a>
+      </div>
+    </div>
+
     <!-- SHEIN BR -->
     <div class="link-row">
       <div class="link-card">
         <div class="logo-circle logo-shein">S</div>
         <div class="platform-info">
           <div class="pname">SHEIN BR</div>
-          <div class="pcookie">Cookie: 24 horas</div>
+          <div class="pcookie">Link a pedido ♡</div>
         </div>
         <div class="dots-divider"></div>
-        <a href="https://onelink.shein.com/8/5ptsgqp2wg8h" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+        <span class="link-btn link-btn-off">VER ACIMA</span>
       </div>
       <div class="row-deco">🎀</div>
     </div>
@@ -509,10 +595,10 @@
         <div class="logo-circle logo-shein">S</div>
         <div class="platform-info">
           <div class="pname">SHEIN JP</div>
-          <div class="pcookie">Cookie: 24 horas</div>
+          <div class="pcookie">Link a pedido ♡</div>
         </div>
         <div class="dots-divider"></div>
-        <a href="https://onelink.shein.com/8/5ptphlbnoh9t" target="_blank" rel="noopener" class="link-btn">CLIQUE PARA ACESSAR</a>
+        <span class="link-btn link-btn-off">VER ACIMA</span>
       </div>
       <div class="row-deco">🎏</div>
     </div>
